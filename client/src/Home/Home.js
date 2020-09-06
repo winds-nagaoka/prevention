@@ -17,6 +17,8 @@ const Home = () => {
       .end((err, res) => {
         if (res.body.status) {
           setMode(1)
+          setTemperature("")
+          setName("")
         }
       })
   }
