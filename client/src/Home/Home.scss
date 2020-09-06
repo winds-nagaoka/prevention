@@ -1,3 +1,5 @@
+@import '../_color.scss';
+
 .home {
 
   div.logo {
@@ -47,25 +49,98 @@
       margin: 0 0 48px;
     }
 
-    .link-button {
-      margin: 24px 24px 96px;
+    .form {
+      margin: 24px;
 
-      .button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 44px;
+      label {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      input {
+        -webkit-appearance: none;
+        display: block;
+        width: calc(100% - 20px - 2px);
+        margin: 0 0 16px;
+        padding: 8px 10px;
+        border: 1px solid #ccc;
         border-radius: .25rem;
-        background: rgba(234,85,80,.8);
-        color: #fefefe;
-        text-decoration: none;
-        text-align: center;
-        font-size: 1.1rem;
+        color: #333;
+        line-height: 1.6;
         font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '游ゴシック Medium', meiryo, sans-serif;
-
-        &:hover {
-          background: rgba(234,85,80,1);
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  
+        &:focus {
+          border: solid 1px rgba(204,148,37,1);
+          box-shadow: 0 0 0 0.2rem rgba(204,148,37,.25);
+          outline: 0;
         }
+  
+        &:active {
+          border: solid 1px rgba(204,148,37,1);
+        }
+      }
+    }
+
+    .button {
+      margin: 0 24px;
+
+      button {
+        display: block;
+        width: 100%;
+        border: 0;
+        padding: 10px;
+        margin: 16px auto;
+        border-radius: 2px;
+        background: #ddd;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all ease-in-out .1s;
+    
+        i {
+          font-size: 24px;
+        }
+    
+        &:hover {
+          background: $base-color;
+          color: #fff;
+          transition: all ease-in-out 0s;
+        }
+        &:active {
+          background: $base-color-dark;
+          color: #fff;
+          transition: all ease-in-out .1s;
+        }
+    
+        &.highlight {
+          background: $base-color;
+          color: #fff;
+        }
+    
+        &.highlight:hover,
+        &.highlight:active {
+          background: $base-color-bright;
+          color: #fff;
+        }
+    
+        &[disabled] {
+          color: #888;
+    
+          &:hover {
+            background: #ddd;
+            color: #888;
+          }
+          &:active {
+            background: #ddd;
+            color: #888;
+          }
+        }
+      }
+
+      p {
+        font-size: 14px;
+        color: gray;
+        text-align: center;
       }
     }
 
