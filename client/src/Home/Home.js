@@ -1,13 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../Component/Logo/Logo'
 
 import './Home.css'
 
 const Home = () => {
-  useEffect(() => {
-    localStorage.clear()
-  }, [])
+  const [temperature, setTemperature] = useState("")
+  const [name, setName] = useName("")
   return (
     <div className='home'>
       <div className='logo'>
@@ -16,12 +15,15 @@ const Home = () => {
       <div className='layout'>
         <div className='title'>
           <h2>Survey</h2>
-          <h1>アンケート</h1>
+          <h1>体温申請</h1>
         </div>
-        <p>本日はご来場いただき、誠にありがとうございます。</p>
-        <p>アンケートへのご協力をお願いいたします。</p>
-        <div className='link-button'>
-          <Link to='/guest' className='button' onTouchStart={() => {}}><span>アンケートを開く</span></Link>
+        <p>リリックホール入り口で体温測定ができます</p>
+        <p>記録は3週間を目安に削除されます</p>
+        <div>
+          <label>本日の体温</label>
+          <input onChange={(e) => setTemperature(e.target.value)} value={temperature} />
+          <label>氏名</label>
+          <input onChange={(e) => setName(e.target.value)} value={name} />
         </div>
       </div>
       <footer>

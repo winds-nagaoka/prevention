@@ -6,27 +6,17 @@ import {
 } from 'react-router-dom'
 
 import Scroll from './Component/Scroll/Scroll'
-import Base from './Base/Base'
-import Home from './Guest/Home'
-import Input from './Guest/Input'
-import Check from './Guest/Check'
-import Close from './Guest/Close'
-import Login from './Login/Login'
-import Survey from './Survey/Survey'
+import Home from './Home/Home'
+import Toast from './Component/Toast/Toast'
 
 export default class App extends Component {
   render () {
     return (
       <Router>
+        <Toast />
         <Scroll>
           <Switch>
-            <Route exact path='/' component={Base} />
-            <Route exact path='/home' component={Home} />
-            <Route exact path='/guest' component={Input} />
-            <Route exact path='/check' component={Check} />
-            <Route exact path='/close' component={Close} />
-            <Route exact path='/32ndconcert' component={Login} />
-            <Route path='/32ndconcert/survey' component={Survey} />
+            <Route exact path='/' component={Home} />
           </Switch>
         </Scroll>
       </Router>
