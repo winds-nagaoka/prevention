@@ -66,6 +66,7 @@
         border: 1px solid #ccc;
         border-radius: .25rem;
         color: #333;
+        font-size: 16px;
         line-height: 1.6;
         font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '游ゴシック Medium', meiryo, sans-serif;
         transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
@@ -102,25 +103,20 @@
         }
     
         &:hover {
-          background: $base-color;
+          background: rgba(204,148,37,1);
           color: #fff;
           transition: all ease-in-out 0s;
         }
+
         &:active {
-          background: $base-color-dark;
+          background: rgba(204,148,37,1);
           color: #fff;
           transition: all ease-in-out .1s;
         }
-    
-        &.highlight {
-          background: $base-color;
-          color: #fff;
-        }
-    
-        &.highlight:hover,
-        &.highlight:active {
-          background: $base-color-bright;
-          color: #fff;
+
+        &:focus {
+          box-shadow: 0 0 0 0.2rem rgba(204,148,37,.25);
+          outline: 0;
         }
     
         &[disabled] {
@@ -130,9 +126,15 @@
             background: #ddd;
             color: #888;
           }
+
           &:active {
             background: #ddd;
             color: #888;
+          }
+
+          &:focus {
+            box-shadow: none;
+            outline: 0;
           }
         }
       }
