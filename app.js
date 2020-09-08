@@ -24,7 +24,7 @@ const lib = require('./server/lib')
 
 app.post('/post', (req, res) => {
   const { name, temperature } = req.body
-  console.log('[' + lib.showTime() + '] post:', name, temperature)
+  console.log('[' + lib.showTime() + '] post')
   const reg = { name, temperature }
   database.insert(reg, (error) => {
     if (error) {
