@@ -11,6 +11,7 @@ const Home = () => {
 
   const sendPost = (e) => {
     e.preventDefault()
+    if (temperature === "" || name === "") return false
     request.post('/post')
       .type('form')
       .send({ name, temperature })
@@ -28,6 +29,8 @@ const Home = () => {
     setMode(0)
   }
 
+  const buttondisabled = (temperature === "" || name === "") ? true : false
+
   return (
     <div className='home'>
       <div className='logo'>
@@ -44,7 +47,7 @@ const Home = () => {
               <input onChange={(e) => setName(e.target.value)} value={name} />
             </div>
             <div className="button">
-              <button onClick={(e) => sendPost(e)}>送信</button>
+              <button onClick={(e) => sendPost(e)} onTouchStart={() => {}} disabled={buttondisabled}>送信</button>
               <p>記録は3週間を目安に削除します</p>
             </div>
           </>
@@ -53,7 +56,7 @@ const Home = () => {
           <>
             <p>ご協力ありがとうございました</p>
             <div className="button">
-              <button onClick={(e) => back(e)}>戻る</button>
+              <button onClick={(e) => back(e)} onTouchStart={() => {}}>戻る</button>
             </div>            
           </>
         )}
