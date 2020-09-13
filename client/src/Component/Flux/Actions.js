@@ -1,7 +1,5 @@
 import { appDispatcher } from './Dispatcher'
 
-import lib from '../Library/Library'
-
 export const ActionType = {
   TOAST_SHOW: 'TOAST_SHOW'
 }
