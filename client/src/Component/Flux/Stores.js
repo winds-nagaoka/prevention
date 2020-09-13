@@ -1,7 +1,5 @@
 import { appDispatcher } from './Dispatcher'
-import { ActionType, Actions } from './Actions'
-
-import lib from '../Library/Library'
+import { ActionType } from './Actions'
 
 export const toastStore = {message: undefined, show: null}
 appDispatcher.register(payload => {

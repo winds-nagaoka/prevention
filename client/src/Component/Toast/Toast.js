@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import { Actions } from '../Flux/Actions'
 import { toastStore } from '../Flux/Stores'
 
 import './Toast.css'
@@ -19,7 +18,6 @@ export default class Toast extends Component {
   }
 
   render () {
-    // console.log('Toast Render: Show: ' + this.state.toastShow + ', Message: ' + this.state.toastMessage + ', className: ' + this.state.className)
     if (this.state.toastShow) {
       const timeout = 3600
       setTimeout(() => {
