@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import request from 'superagent'
 import Logo from '../Component/Logo/Logo'
+import { Actions } from '../Component/Flux/Actions'
 
 import './Home.css'
 
@@ -20,6 +21,8 @@ const Home = () => {
           setMode(1)
           setTemperature("")
           setName("")
+          window.scrollTo(0, 0)
+          Actions.toastShow("送信しました")
         }
       })
   }
@@ -27,6 +30,7 @@ const Home = () => {
   const back = (e) => {
     e.preventDefault()
     setMode(0)
+    window.scrollTo(0, 0)
   }
 
   const buttondisabled = (temperature === "" || name === "") ? true : false
