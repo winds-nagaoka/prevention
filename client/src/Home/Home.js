@@ -8,11 +8,20 @@ import './Home.css'
 const Home = () => {
   const [mode, setMode] = useState(0)
   const [temperature, setTemperature] = useState("")
-  const [name, setName] = useState("")
+
+  const defaultName = localStorage.getItem("name") ? localStorage.getItem("name") : ""
+  const [name, setName] = useState(defaultName)
+  const updateName = (value) => {
+    if (save) localStorage.setItem("name", name)
+    setName(value)
+  }
+  const [save, setSave] = useState(defaultName === "" ? false : true)
 
   const sendPost = (e) => {
     e.preventDefault()
     if (temperature === "" || name === "") return false
+    if (save) localStorage.setItem("name", name)
+    if (!save) localStorage.clear()
     request.post('/post')
       .type('form')
       .send({ name, temperature })
@@ -20,7 +29,7 @@ const Home = () => {
         if (res.body.status) {
           setMode(1)
           setTemperature("")
-          setName("")
+          setName(save ? localStorage.getItem("name") : "")
           window.scrollTo(0, 0)
           Actions.toastShow("送信しました")
         }
@@ -48,7 +57,11 @@ const Home = () => {
               <label>本日の体温</label>
               <input onChange={(e) => setTemperature(e.target.value)} value={temperature} type="number" />
               <label>氏名</label>
-              <input onChange={(e) => setName(e.target.value)} value={name} />
+              <input onChange={(e) => updateName(e.target.value)} value={name} type="text" />
+              <label className="checkbox">
+                <input type="checkbox" checked={save} onChange={() => setSave(!save)} />
+                  氏名をブラウザに保存する
+              </label>
             </div>
             <div className="button">
               <button onClick={(e) => sendPost(e)} onTouchStart={() => {}} disabled={buttondisabled}>送信</button>
@@ -61,7 +74,7 @@ const Home = () => {
             <p>ご協力ありがとうございました</p>
             <div className="button">
               <button onClick={(e) => back(e)} onTouchStart={() => {}}>戻る</button>
-            </div>            
+            </div>
           </>
         )}
       </div>
